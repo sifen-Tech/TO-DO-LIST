@@ -22,7 +22,7 @@ This project was created to strengthen my JavaScript skills while also improving
      **Project Structure**
 
 
-TO-DO-LIST/
+TO-DO-LIST
 |___image.png
 │── index.html
 │── style.css
@@ -49,7 +49,7 @@ cd TO-DO-LIST
 
   ** Preview**
 
-![Project Preview](image.png)
+![alt text](image-2.png)
 
   ** What I Practiced**
 
