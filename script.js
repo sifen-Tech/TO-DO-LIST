@@ -74,12 +74,12 @@ function createTaskElement(taskObj){
 
 
     const doneButton = document.createElement('button');
-    doneButton.textContent = 'Done';
     doneButton.className = 'done-btn';
+    doneButton.textContent = taskDone? 'undone':'Done';
     listItem.appendChild(doneButton);
     
 
-    taskList.appendChild(listItem);
+    
     deleteButton.addEventListener('click',function(){
         taskList.removeChild(listItem);
         saveTasks();
@@ -89,9 +89,16 @@ function createTaskElement(taskObj){
 
     doneButton.addEventListener('click',function(){
         listItem.classList.toggle('done');
+        if (listItem.classList.contains('done')){
+            doneButton.textContent ='undone';
+        }else{
+            doneButton.textContent = 'Done';
+        
+        }
         saveTasks();
         taskCounter();
     });
+    taskList.appendChild(listItem);
 }
 
 function saveTasks(){
