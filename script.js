@@ -5,25 +5,50 @@ const taskList = document.getElementById('taskList');
 const counterTask= document.getElementById('counter');
 const clearButton = document.getElementById('clearBtn')
 loadTasks();
+function showValidationError(message){
+    if(errorMessage){
+        errorMessage.textContent=message;
+        errorMessage.style.display='block';
+    
+    setTimeout(() => {
+        errorMessage.textContent='';
+        errorMessage.style.display ='none';
+    },3000);
+    }
+}
 function taskCounter(){
+    const totalTasks = taskList.querySelectorAll('li').length;
     const incompleteTasks = taskList.querySelectorAll('li:not(.done)').length;
     if(counterTask){
+    if(totalTasks > 0 && incompleteTasks === 0){
+        counterTask.textContent = '🎉 All tasks done!';
+        counterTask.classList.add('all-done');
+    }else{
         counterTask.textContent = `Tasks left:${incompleteTasks}`;
+        counterTask.classList.remove('all-done');
+    }
+        
+    
     }
     }
 
 function addTask(){
     const task = taskInput.value.trim();
-    if (task){
+    if (!task){
+        showValidationError('Please type a task first');
+        return;
+    }
+    const existingTasks = Array.from(taskList.querySelectorAll('.task-text'))
+                            .map(span=>span.textContent.trim().toLowerCase());
+    if (existingTasks.includes(task.toLowerCase())){
+        showValidationError('This task already exists!');
+        return;
+    }
         createTaskElement({text:task,done:false});
         taskInput.value='';
         saveTasks();
         taskCounter();
-    }else{
-        alert('please type a task first');
     }
-
-}
 
   addButton.addEventListener('click', addTask);
 
@@ -92,9 +117,8 @@ function loadTasks(){
     }
 clearButton.addEventListener('click',function(){
     if (taskList.children.length === 0) {
-        alert('There are no tasks to clear!');
+        showValidationError('There are no tasks to clear')
         return;
-
     }
      if (confirm('Are you sure you want to delete all tasks?')) {
         taskList.innerHTML = '';
