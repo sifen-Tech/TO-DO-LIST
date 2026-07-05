@@ -45,7 +45,7 @@ git clone https://github.com/sifen-Tech/TO-DO-LIST.git
 cd TO-DO-LIST
 ```
 
-3. Open `index.html` in your web browser.
+
 
 ##  Preview
 
