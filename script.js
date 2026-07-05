@@ -4,6 +4,7 @@ const errorMessage =document.getElementById('errorMsg');
 const taskList = document.getElementById('taskList');
 const counterTask= document.getElementById('counter');
 const clearButton = document.getElementById('clearBtn')
+
 loadTasks();
 function showValidationError(message){
     if(errorMessage){
@@ -38,8 +39,7 @@ function addTask(){
         showValidationError('Please type a task first');
         return;
     }
-    const existingTasks = Array.from(taskList.querySelectorAll('.task-text'))
-                            .map(span=>span.textContent.trim().toLowerCase());
+    const existingTasks = Array.from(taskList.querySelectorAll('.task-text')) .map(span=>span.textContent.trim().toLowerCase());
     if (existingTasks.includes(task.toLowerCase())){
         showValidationError('This task already exists!');
         return;
@@ -56,7 +56,7 @@ function createTaskElement(taskObj){
     const taskTextValue = typeof taskObj === 'object' ? taskObj.text : taskObj;
     const taskDone = typeof taskObj === 'object' ? taskObj.done :false;
     const listItem =document.createElement('li');
-
+    listItem.className = "task-item";
     if(taskDone){
         listItem.classList.add('done');
     }
@@ -77,7 +77,7 @@ function createTaskElement(taskObj){
     doneButton.textContent = 'Done';
     doneButton.className = 'done-btn';
     listItem.appendChild(doneButton);
-
+    
 
     taskList.appendChild(listItem);
     deleteButton.addEventListener('click',function(){
@@ -85,7 +85,7 @@ function createTaskElement(taskObj){
         saveTasks();
         taskCounter();
     });
-
+    
 
     doneButton.addEventListener('click',function(){
         listItem.classList.toggle('done');
@@ -93,6 +93,7 @@ function createTaskElement(taskObj){
         taskCounter();
     });
 }
+
 function saveTasks(){
     let tasks = [];
     taskList.querySelectorAll('li').forEach(function(item){
@@ -114,15 +115,29 @@ function loadTasks(){
     taskList.innerHTML ='';
     const tasks= JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.forEach(createTaskElement);
+    taskCounter();
     }
 clearButton.addEventListener('click',function(){
     if (taskList.children.length === 0) {
         showValidationError('There are no tasks to clear')
         return;
     }
-     if (confirm('Are you sure you want to delete all tasks?')) {
+    if (confirm('Are you sure you want to delete all tasks?')) {
         taskList.innerHTML = '';
         localStorage.removeItem('tasks');
         taskCounter();
 }
+});
+
+let colors = document.querySelectorAll(".color-circle");
+colors.forEach(function(circle){
+
+    circle.addEventListener("click", function(){
+
+        document.body.style.backgroundColor = circle.dataset.color;
+        for(let i = 0; i < colors.length; i++){ 
+            colors[i].classList.remove("active"); 
+        }
+    circle.classList.add("active");
+    });
 });
