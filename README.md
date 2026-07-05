@@ -23,10 +23,14 @@ This project was created to strengthen my JavaScript skills while also improving
 
 
 TO-DO-LIST
-|___image.png
+|___image-3.png
+
 │── index.html
+
 │── style.css
+
 │── script.js
+
 │── README.md
 
 
@@ -49,7 +53,7 @@ cd TO-DO-LIST
 
   ** Preview**
 
-![alt text](image-2.png)
+![alt text](image-3.png)
 
   ** What I Practiced**
 
