@@ -49,7 +49,7 @@ cd TO-DO-LIST
 
 ##  Preview
 
-![Project Preview](image.png)
+![alt text](image-1.png)
 
 ##  What I Practiced
 
