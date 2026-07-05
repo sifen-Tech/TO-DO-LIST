@@ -8,23 +8,31 @@ loadTasks();
 function addTask(){
     const task = taskInput.value.trim();
     if (task){
-        createTaskElement(task);
+        createTaskElement({text:task,done:false});
         taskInput.value='';
-        saveTasks()
+        saveTasks();
     }else{
-        alert('please type a task first')
+        alert('please type a task first');
     }
 
 }
 
-  
+  addButton.addEventListener('click', addTask);
 
-
-addButton.addEventListener('click', addTask);
-
-function createTaskElement(task){
+function createTaskElement(taskObj){
+    const taskTextValue = typeof taskObj === 'object' ? taskObj.text : taskObj;
+    const taskDone = typeof taskObj === 'object' ? taskObj.done :false;
     const listItem =document.createElement('li');
-    listItem.textContent = task;
+
+    if(taskDone){
+        listItem.classList.add('done');
+    }
+    
+
+    const taskText = document.createElement('span');
+    taskText.textContent = taskTextValue;
+    taskText.className = 'task-text';
+    listItem.appendChild(taskText);
 
     const deleteButton= document.createElement('button');
     deleteButton.textContent = 'Delete';
@@ -40,67 +48,37 @@ function createTaskElement(task){
 
     taskList.appendChild(listItem);
     deleteButton.addEventListener('click',function(){
-    taskList.removeChild(listItem);
-    saveTasks();
+        taskList.removeChild(listItem);
+        saveTasks();
     });
 
 
     doneButton.addEventListener('click',function(){
-    listItem.classList.toggle('done');
-    saveTasks();
+        listItem.classList.toggle('done');
+        saveTasks();
     });
-
-
-
- }
+}
 function saveTasks(){
     let tasks = [];
     taskList.querySelectorAll('li').forEach(function(item){
-        tasks.push(item.textContent.replace('Delete','').replace('Done','').trim());
-
+        const textSpan = item.querySelector('.task-text');
+        
+        if (textSpan) {
+            tasks.push({
+                text:textSpan.textContent.trim(),
+                done:item.classList.contains('done')
+            })
+            
+        }
+    
 
     });
     localStorage.setItem('tasks',JSON.stringify(tasks));
 }
 function loadTasks(){
+    taskList.innerHTML ='';
     const tasks= JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.forEach(createTaskElement);
+    //  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
-//if(taskInput.value.trim()===''){
-//         alert("Please type a task first");
-//     }
-//     else{
-//         let li =document.createElement("li");
-//         li.innerHTML = taskInput.value;
-//         taskList.appendChild(li);
-       
-    
-//     taskInput.value="";
-    
-// }
-// }
-//     addButton.addEventListener('click', addTask);
-//     const doneButton = document.createElement('button');
-// //     
-
-    // let taskText = document.createElement("span");
-    // taskText.textContent = taskInput.value;
-    // li.appendChild(taskText);
-    // let doneButton = document.createElement("button");
-    // doneButton.textContent = "Done";
-    // doneButton.className = "done-btn";
-    // doneButton.addEventListener('click', function() {
-    // li.classList.toggle("checked");
-    //     });
-    // li.appendChild(doneButton);
-    // taskList.appendChild(li);
-    // addButton.addEventListener('click', addTask);
-
-    // function saveTasks(){
-    //     localStorage.setItem("data",listContainer.innerHTML);
-    // }
-    // function showTask(){
-    //     listContainer.innerHTML =localStorage.getItem("data");
-    // }
-    // showTask();
 
