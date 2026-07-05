@@ -53,7 +53,7 @@ cd TO-DO-LIST
 
   ** Preview**
 
-![alt text](image-3.png)
+![alt text](image.png)
 
   ** What I Practiced**
 
