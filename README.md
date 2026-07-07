@@ -49,7 +49,7 @@ cd TO-DO-LIST
 
 ##  Preview
 
-![alt text](image-1.png)
+![alt text](images/image.png)
 
 ##  What I Practiced
 

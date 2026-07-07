@@ -8,7 +8,7 @@
 body {
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #1e1e2e;
+  background-image: url('images/download.png1.png'); 
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -18,7 +18,7 @@ body {
 
 /* ── Card ── */
 .card {
-  background: #ffffff;
+  background: transparent;
   border-radius: 16px;
   padding: 32px;
   width: 100%;
@@ -30,13 +30,13 @@ body {
 h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #1e1e2e;
+  color: #a80f5b;
   margin-bottom: 4px;
 }
 
 #counter {
   font-size: 13px;
-  color: #888;
+  color:  #a80f5b;
   margin-bottom: 24px;
 }
 
@@ -55,7 +55,7 @@ h1 {
 #taskInput {
   flex: 1;
   padding: 10px 14px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid  #a80f5b;
   border-radius: 10px;
   font-size: 14px;
   outline: none;
@@ -63,14 +63,14 @@ h1 {
 }
 
 #taskInput:focus {
-  border-color: #5c6bc0;
+  border-color:blue;
 }
 
 #addBtn {
   padding: 10px 18px;
-  background: #5c6bc0;
+  background:  #a80f5b;
   color: white;
-  border: none;
+  border:none;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
@@ -84,7 +84,7 @@ h1 {
 
 /* ── Error message ── */
 #errorMsg {
-  font-size: 12px;
+  font-size: 15px;
   color: #e53935;
   margin-bottom: 12px;
   min-height: 16px;
@@ -104,26 +104,26 @@ h1 {
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
-  background: #f9f9fb;
+  background:  white;
   border-radius: 10px;
-  border: 1px solid #ebebeb;
+  border: 3px solid  #a80f5b;
 }
 
 .task-text {
   flex: 1;
   font-size: 14px;
-  color: #2d2d2d;
+  color: black;
   transition: color 0.2s;
 }
 
 /* ── CSS classes students will apply with classList ── */
 .done .task-text {
   text-decoration: line-through;
-  color: #aaa;
+  color:#a80f5b;
 }
 
 .done {
-  background: #f0f0f0;
+  background: white;
 }
 
 /* ── Task buttons ── */
@@ -165,7 +165,7 @@ h1 {
   width: 100%;
   padding: 10px;
   background: transparent;
-  border: 2px solid #e0e0e0;
+  border: 2px solid  #a80f5b ;
   border-radius: 10px;
   font-size: 13px;
   color: #aaa;
@@ -180,14 +180,14 @@ h1 {
 }
 
 /* ── Divider ── */
-.divider {
+/* .divider {
   border: none;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid  #a80f5b;;
   margin-bottom: 20px;
-}
+} */
 
 /* ── BONUS: Color picker section ── */
-.color-section p {
+/* .color-section p {
   font-size: 12px;
   font-weight: 600;
   color: #aaa;
@@ -216,19 +216,19 @@ h1 {
 }
 
 /* JS adds this class when a color is selected */
-.color-circle.active {
+/* .color-circle.active {
   border-color: #fff;
   outline: 2px solid #5c6bc0;
-}
+} */
 
 /* Circle colors */
-.color-circle[data-color="#1e1e2e"] { background-color: #1e1e2e; }
+/* .color-circle[data-color="#1e1e2e"] { background-color: #1e1e2e; }
 .color-circle[data-color="#37474f"] { background-color: #37474f; }
 .color-circle[data-color="#1a237e"] { background-color: #1a237e; }
 .color-circle[data-color="#4a148c"] { background-color: #4a148c; }
 .color-circle[data-color="#880e4f"] { background-color: #880e4f; }
-.color-circle[data-color="#bf360c"] { background-color: #bf360c; }
-.color-circle[data-color="#1b5e20"] { background-color: #1b5e20; }
+.color-circle[data-color="#bf360c"] { background-color: #1b5e20; }
+.color-circle[data-color="#1b5e20"] { background-color: #1b5e20; } */
 
 /* ── All done celebration message ── */
 .all-done-msg {
@@ -238,7 +238,7 @@ h1 {
   color: #388e3c;
   margin-top: 8px;
   display: none;
-}
+} */
 
 /* JS adds this class to show the message */
 .all-done-msg.visible {

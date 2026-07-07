@@ -136,15 +136,17 @@ clearButton.addEventListener('click',function(){
 }
 });
 
-let colors = document.querySelectorAll(".color-circle");
-colors.forEach(function(circle){
+// let colors = document.querySelectorAll(".color-circle");
+// colors.forEach(function(circle){
 
-    circle.addEventListener("click", function(){
+//     circle.addEventListener("click", function(){
 
-        document.body.style.backgroundColor = circle.dataset.color;
-        for(let i = 0; i < colors.length; i++){ 
-            colors[i].classList.remove("active"); 
-        }
-    circle.classList.add("active");
-    });
-});
+//         document.body.style.backgroundColor = circle.dataset.color;
+//         for(let i = 0; i < colors.length; i++){ 
+//             colors[i].classList.remove("active"); 
+//         }
+//     circle.classList.add("active");
+    
+//     });
+
+// });
